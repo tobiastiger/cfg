@@ -86,8 +86,7 @@ install.sh -O -)"
 
 
 # install zsh and themes
-install_dotfiles() {
-
+get_dotfiles() {
     echo ".cfg" >> .gitignore
     echo "alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'" >> $HOME/.zshrc
 
