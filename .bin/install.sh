@@ -128,16 +128,12 @@ main() {
     fi
 
     if [[ $cmd == "base" ]]; then
-        check_is_sudo
         base
     elif [[ $cmd == "dotfiles" ]]; then
-        check_is_sudo
         get_dotfiles
     elif [[ $cmd == "vim" ]]; then
-        check_is_sudo
         echo "This is not the editor you seek."
     elif [[ $cmd == "docker" ]]; then
-        check_is_sudo
         install_docker
     else
         usage

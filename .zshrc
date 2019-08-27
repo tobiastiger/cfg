@@ -119,12 +119,12 @@ compinit
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+alias zshconfig="mate ~/.zshrc"
+alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias d="dirs -v | head -10"
+alias config='/usr/bin/git --git-dir=/home/a290074/.cfg/ --work-tree=/home/a290074'
 
 source /usr/share/powerlevel9k/powerlevel9k.zsh-theme
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -134,6 +134,6 @@ source /home/a290074/docker_aliases.zsh
 export PATH="/home/a290074/.pyenv/bin:$PATH"
 export PATH="/home/a290074/.local/bin:$PATH"
 
-if [ -f ~/.bashrc ]; then
-    source ~/.bashrc;
+if [ -f ~/.zsh_aliases ]; then
+    . ~/.zsh_aliases
 fi
