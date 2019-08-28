@@ -1,6 +1,11 @@
 #!/bin/bash
 
-# basic install script for ubuntu
+# Basic install script for ubuntu.
+
+# Have to set alias for script since it does not source .bashrc.
+shopt -s expand_aliases
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
 
 check_is_sudo() {
     if [ "$EUID" -ne 0 ]; then
@@ -11,29 +16,21 @@ check_is_sudo() {
 
 
 setup_sudo() {
-    # add user to sudoers
+    # Add user to sudoers
     adduser "${USER}" sudo
 
-    # Add user to systemd groups
-    gpasswd -a "${USER}" systemd-journal
-    gpasswd -a "${USER}" systemd-network
-
     # Create docker group
-    sudo groupadd docker
-    sudo gpasswd -a "${USER}" docker
+    groupadd docker
+    gpasswd -a "${USER}" docker
 }
 
 
 base() {
-    setup_sudo;
-
-    apt update || true
-    apt install -y \
+    apt-get update > /dev/null || true
+    apt-get install -y \
     git \
     curl \
-    apt-transport-https \
-    ca-certificates \
-    software-properties-common
+    wget > /dev/null
 }
 
 
@@ -45,13 +42,19 @@ install_docker() {
         exit
     fi
 
+    apt update > /dev/null || true
+    apt install -y \
+    apt-transport-https \
+    ca-certificates \
+    software-properties-common > /dev/null
+
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
     add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
 
-    apt update || true
-    apt-cache policy docker-ce
+    apt update > /dev/null || true
+    apt-cache policy docker-ce > /dev/null
 
-    apt install -y docker-ce
+    apt install -y docker-ce > /dev/null
 
     systemctl status docker > /dev/null
     retVal=$?
@@ -63,44 +66,44 @@ install_docker() {
 
 
 install_zsh() {
-    apt update || true
-    apt install -y \
+    apt-get update > /dev/null || true
+    apt-get install -y \
         zsh \
         powerline \
         fonts-powerline \
         zsh-theme-powerlevel9k \
-        zsh-syntax-highlighting
+        zsh-syntax-highlighting > /dev/null
 
     usermod -s $(which zsh) $(whoami)
 
     sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/
-install.sh -O -)"
+install.sh -O -y -)" > /dev/null
 
-    git clone https://github.com/ryanoasis/nerd-fonts.git
-
-    (
-        cd ${HOME}/nerd-fonts
-        ./install.sh
-        )
+    #git clone https://github.com/ryanoasis/nerd-fonts.git
+    #
+    #(
+    #    cd ${HOME}/nerd-fonts
+    #    ./install.sh
+    #    )
 }
 
 
-# install zsh and themes
+# Install zsh and themes
 get_dotfiles() {
     echo ".cfg" >> .gitignore
-    echo "alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'" >> $HOME/.zshrc
 
     git clone --bare https://github.com/tobiastiger/cfg.git $HOME/.cfg
 
-    mkdir -p .config-backup
-    config checkout
+    config checkout > /dev/null 2>&1
 
     if [ $? = 0 ]; then
         echo "Checked out config.";
     else
         echo "Backing up pre-existing dot files.";
+        mkdir -p .config-backup
         config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
         config checkout
+        echo "Success!";
     fi;
 
     config config status.showUntrackedFiles no
@@ -132,6 +135,8 @@ main() {
         get_dotfiles
     elif [[ $cmd == "vim" ]]; then
         echo "This is not the editor you seek."
+    elif [[ $cmd == "zsh" ]]; then
+        install_zsh
     elif [[ $cmd == "docker" ]]; then
         install_docker
     else
