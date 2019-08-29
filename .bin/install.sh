@@ -87,12 +87,12 @@ install_zsh() {
     sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/
 install.sh -O -y -)" > /dev/null
 
-    #git clone https://github.com/ryanoasis/nerd-fonts.git
-    #
-    #(
-    #    cd ${HOME}/nerd-fonts
-    #    ./install.sh
-    #    )
+    git clone https://github.com/ryanoasis/nerd-fonts.git
+
+    (
+        cd ${HOME}/nerd-fonts
+        ./install.sh Hack
+        )
 }
 
 
