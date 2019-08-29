@@ -34,6 +34,14 @@ base() {
 }
 
 
+install_vim() {
+    apt-get update > /dev/null || true
+    apt-get install -y \
+    vim-gui-common \
+    vim-runtime > /dev/null
+}
+
+
 install_docker() {
     systemctl status docker > /dev/null
     retVal=$?

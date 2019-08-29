@@ -2,18 +2,21 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/a290074/.oh-my-zsh"
+export ZSH="/home/${USER}/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+POWERLEVEL9K_MODE="nerdfont-complete"
+
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
-
-POWERLEVEL9K_MODE="nerdfont-complete"
 #POWERLEVEL9K_DISABLE_RPROMPT=true
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+
+POWERLEVEL9K_VCS_GIT_GITHUB_ICON='\uF408 '
+
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir_writable dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status
                                     command_execution_time
@@ -129,10 +132,10 @@ alias config='/usr/bin/git --git-dir=/home/a290074/.cfg/ --work-tree=/home/a2900
 source /usr/share/powerlevel9k/powerlevel9k.zsh-theme
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-source /home/a290074/docker_aliases.zsh
+source /home/${USER}/docker_aliases.zsh
 
-export PATH="/home/a290074/.pyenv/bin:$PATH"
-export PATH="/home/a290074/.local/bin:$PATH"
+export PATH="/home/${USER}/.pyenv/bin:$PATH"
+export PATH="/home/${USER}/.local/bin:$PATH"
 
 if [ -f ~/.zsh_aliases ]; then
     . ~/.zsh_aliases
