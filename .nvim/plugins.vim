@@ -8,13 +8,21 @@ Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'neomake/neomake'
-"call minpac#add('neoclide/coc.nvim', {'branch': 'release'})
 Plug 'liuchengxu/vista.vim'
 Plug 'saltstack/salt-vim'
 Plug'junegunn/goyo.vim'
 
-"" Themes
-"" ...
+" Themes
+" Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' } macOS
+" Made optional so that we can load vim faster
+" See SwitchColorScheme for function that loads these when swapping scheme
+Plug 'sainnhe/gruvbox-material'
+Plug 'ayu-theme/ayu-vim', {'type': 'opt'}
+Plug 'drewtempelmeyer/palenight.vim', {'type': 'opt'}
+Plug 'arcticicestudio/nord-vim', {'type': 'opt'}
+Plug 'haishanh/night-owl.vim', {'type': 'opt'}
+" Plug 'dracula/vim', {'type': 'opt', 'name': 'dracula'}
+Plug 'kaicataldo/material.vim', {'type': 'opt'}
 
 
 Plug 'heavenshell/vim-jsdoc'
