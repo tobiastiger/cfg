@@ -38,7 +38,8 @@ install_vim() {
     apt-get update > /dev/null || true
     apt-get install -y \
     vim-gui-common \
-    vim-runtime > /dev/null
+    vim-runtime \
+    taskwarrior > /dev/null
 }
 
 
