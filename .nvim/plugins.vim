@@ -21,7 +21,7 @@ Plug 'ayu-theme/ayu-vim', {'type': 'opt'}
 Plug 'drewtempelmeyer/palenight.vim', {'type': 'opt'}
 Plug 'arcticicestudio/nord-vim', {'type': 'opt'}
 Plug 'haishanh/night-owl.vim', {'type': 'opt'}
-" Plug 'dracula/vim', {'type': 'opt', 'name': 'dracula'}
+Plug 'dracula/vim', {'type': 'opt', 'as': 'dracula'}
 Plug 'kaicataldo/material.vim', {'type': 'opt'}
 
 
