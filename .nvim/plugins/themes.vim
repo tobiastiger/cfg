@@ -10,9 +10,10 @@ endfunction
 function! ColorScheme()
   if g:VIM_COLOR_SCHEME ==# 'palenight'
     " Lazy load theme in
-    packadd palenight.vim
+    Plug 'drewtempelmeyer/palenight.vim'
     let g:palenight_terminal_italics=1
     colorscheme palenight
+    let g:lightline = {}
     let g:lightline.colorscheme = 'palenight_alter'
   endif
 
@@ -20,6 +21,7 @@ function! ColorScheme()
     " Lazy load theme in
     packadd night-owl
     colorscheme night-owl
+    let g:lightline = {}
     let g:lightline.colorscheme = 'challenger_deep'
     hi SignColumn guifg=NONE ctermfg=NONE guibg=#011627 ctermbg=236 gui=NONE cterm=NONE
     highlight clear ALEErrorSign
@@ -32,6 +34,7 @@ function! ColorScheme()
   if g:VIM_COLOR_SCHEME ==# 'embark'
     colorscheme embark
     hi Cursor guibg=#F48FB1 guifg=white
+    let g:lightline = {}
     let g:lightline.colorscheme = 'embark'
     hi CtrlPMatch guifg=#F48FB1 guibg=#1e1c31
     hi CtrlPMode1 guibg=#aaffe4 guifg=black
@@ -45,6 +48,7 @@ function! ColorScheme()
   if g:VIM_COLOR_SCHEME ==# 'challenger_deep'
     colorscheme challenger_deep
     let g:challenger_deep_terminal_italics=1
+    let g:lightline = {}
     let g:lightline.colorscheme = 'challenger_deep'
     hi Normal guibg=NONE ctermbg=NONE
     hi LineNr guibg=NONE ctermbg=NONE
@@ -72,6 +76,7 @@ function! ColorScheme()
     let g:nord_italic = 1
     let g:nord_cursor_line_number_background = 1
     colorscheme nord
+    let g:lightline = {}
     let g:lightline.colorscheme = 'nord'
   endif
 
@@ -83,7 +88,7 @@ function! ColorScheme()
   endif
 
   if g:VIM_COLOR_SCHEME ==# 'material-palenight'
-    packadd material.vim
+    Plug 'kaicataldo/material.vim'
     let g:material_theme_style = 'palenight'
     let g:material_terminal_italics = 1
     colorscheme material
@@ -93,6 +98,7 @@ function! ColorScheme()
     packadd dracula
     set background=dark
     colorscheme dracula
+    let g:lightline = {}
     let g:lightline.colorscheme = 'dracula'
   endif
 
@@ -101,6 +107,7 @@ function! ColorScheme()
     let g:ayucolor="light"
     set background=light
     colorscheme ayu
+    let g:lightline = {}
     let g:lightline.colorscheme = 'ayu_light'
   endif
 
@@ -110,16 +117,17 @@ function! ColorScheme()
     let g:ayucolor="mirage"
     colorscheme ayu
 
-    let g:lightline.colorscheme = 'ayu_mirage'
+    let g:lightline = {'colorcheme': 'ayu_mirage'}
   endif
 
   if g:VIM_COLOR_SCHEME ==# 'gruvbox'
     set background=dark
     colorscheme gruvbox-material
-
+    let g:lightline = {}
     let g:lightline.colorscheme = 'gruvbox_material'
   endif
 endfunction
 
 " The Defaults
-:call SwitchColorScheme('embark')
+:call SwitchColorScheme('gruvbox')
+
