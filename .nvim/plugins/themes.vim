@@ -9,8 +9,6 @@ endfunction
 
 function! ColorScheme()
   if g:VIM_COLOR_SCHEME ==# 'palenight'
-    " Lazy load theme in
-    Plug 'drewtempelmeyer/palenight.vim'
     let g:palenight_terminal_italics=1
     colorscheme palenight
     let g:lightline = {}
@@ -18,8 +16,6 @@ function! ColorScheme()
   endif
 
   if g:VIM_COLOR_SCHEME ==# 'night-owl'
-    " Lazy load theme in
-    packadd night-owl
     colorscheme night-owl
     let g:lightline = {}
     let g:lightline.colorscheme = 'challenger_deep'
@@ -45,7 +41,7 @@ function! ColorScheme()
     endif
   endif
 
-  if g:VIM_COLOR_SCHEME ==# 'challenger_deep'
+  if g:VIM_COLOR_SCHEME ==# 'challenger-deep'
     colorscheme challenger_deep
     let g:challenger_deep_terminal_italics=1
     let g:lightline = {}
@@ -60,7 +56,7 @@ function! ColorScheme()
     hi PmenuSel guibg=#1E1C30 guifg=#63f2f1
     hi CtrlPMatch guifg=#ffe9aa guibg=#1e1c31
     hi CtrlPMode1 guibg=#aaffe4 guifg=black
-    " hi LineNr guibg=#1e1c31
+    hi LineNr guibg=#1e1c31
     " Fix challengers horrible git diffs
     hi DiffAdd guibg=#62d196 guifg=black
     hi DiffDelete guibg=#ff5458 guifg=black
@@ -69,8 +65,6 @@ function! ColorScheme()
   endif
 
   if g:VIM_COLOR_SCHEME ==# 'nord'
-    " Lazy load theme in
-    packadd nord
     let g:nord_underline = 1
     let g:nord_italic_comments = 1
     let g:nord_italic = 1
@@ -116,8 +110,8 @@ function! ColorScheme()
     set background=dark
     let g:ayucolor="mirage"
     colorscheme ayu
-
-    let g:lightline = {'colorcheme': 'ayu_mirage'}
+    let g:lightline = {}
+    let g:lightline.colorscheme = 'ayu_mirage'
   endif
 
   if g:VIM_COLOR_SCHEME ==# 'gruvbox'
@@ -129,5 +123,5 @@ function! ColorScheme()
 endfunction
 
 " The Defaults
-:call SwitchColorScheme('gruvbox')
+:call SwitchColorScheme('embark')
 
