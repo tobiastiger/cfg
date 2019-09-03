@@ -29,7 +29,6 @@ base() {
     apt-get update > /dev/null || true
     apt-get install -y \
     git \
-    curl \
     wget > /dev/null
 }
 
@@ -39,41 +38,12 @@ install_vim() {
     apt-get install -y \
     vim-gui-common \
     vim-runtime \
+    neovim \
     taskwarrior > /dev/null
 }
 
 
-install_docker() {
-    systemctl status docker > /dev/null
-    retVal=$?
-    if [ $retVal -eq 0 ]; then
-        echo "docker is already installed."
-        exit
-    fi
-
-    apt update > /dev/null || true
-    apt install -y \
-    apt-transport-https \
-    ca-certificates \
-    software-properties-common > /dev/null
-
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-    add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
-
-    apt update > /dev/null || true
-    apt-cache policy docker-ce > /dev/null
-
-    apt install -y docker-ce > /dev/null
-
-    systemctl status docker > /dev/null
-    retVal=$?
-    if [ $retVal -ne 0 ]; then
-        echo "docker installation failed."
-        exit
-    fi
-}
-
-
+# Install zsh, plugins, and fonts.
 install_zsh() {
     apt-get update > /dev/null || true
     apt-get install -y \
@@ -92,7 +62,7 @@ install.sh -O -y -)" > /dev/null
 
     (
         cd ${HOME}/nerd-fonts
-        ./install.sh Hack
+        ./install.sh Roboto
         )
 }
 
@@ -126,7 +96,6 @@ usage() {
     echo "  dotfiles                            - get dotfiles"
     echo "  zsh                                 - install zsh and themes"
     echo "  vim                                 - install vim specific dotfiles"
-    echo "  docker                              - install docker"
 }
 
 
@@ -146,8 +115,6 @@ main() {
         echo "This is not the editor you seek."
     elif [[ $cmd == "zsh" ]]; then
         install_zsh
-    elif [[ $cmd == "docker" ]]; then
-        install_docker
     else
         usage
     fi
