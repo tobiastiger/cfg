@@ -1,6 +1,5 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
-
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
@@ -10,20 +9,17 @@ Plug 'tpope/vim-endwise'
 Plug 'neomake/neomake'
 Plug 'liuchengxu/vista.vim'
 Plug 'saltstack/salt-vim'
-Plug'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim'
 
 " Themes
-" Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' } macOS
-" Made optional so that we can load vim faster
-" See SwitchColorScheme for function that loads these when swapping scheme
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'sainnhe/gruvbox-material'
-Plug 'ayu-theme/ayu-vim', {'type': 'opt'}
-Plug 'drewtempelmeyer/palenight.vim', {'type': 'opt'}
-Plug 'arcticicestudio/nord-vim', {'type': 'opt'}
-Plug 'haishanh/night-owl.vim', {'type': 'opt'}
-Plug 'dracula/vim', {'type': 'opt', 'as': 'dracula'}
-Plug 'kaicataldo/material.vim', {'type': 'opt'}
-
+Plug 'ayu-theme/ayu-vim'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'arcticicestudio/nord-vim', { 'as': 'nord' }
+Plug 'haishanh/night-owl.vim'
+Plug 'dracula/vim', { 'as': 'dracula'}
+Plug 'kaicataldo/material.vim'
 
 Plug 'heavenshell/vim-jsdoc'
 Plug 'mxw/vim-jsx'
