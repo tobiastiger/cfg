@@ -20,6 +20,7 @@ Plug 'haishanh/night-owl.vim'
 Plug 'dracula/vim', { 'as': 'dracula'}
 Plug 'kaicataldo/material.vim'
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'wakatime/vim-wakatime'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'w0rp/ale'
