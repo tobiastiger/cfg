@@ -75,21 +75,18 @@ function! ColorScheme()
   endif
 
   if g:VIM_COLOR_SCHEME ==# 'material'
-    packadd material.vim
     let g:material_theme_style = 'default'
     let g:material_terminal_italics = 1
     colorscheme material
   endif
 
   if g:VIM_COLOR_SCHEME ==# 'material-palenight'
-    Plug 'kaicataldo/material.vim'
     let g:material_theme_style = 'palenight'
     let g:material_terminal_italics = 1
     colorscheme material
   endif
 
   if g:VIM_COLOR_SCHEME ==# 'dracula'
-    packadd dracula
     set background=dark
     colorscheme dracula
     let g:lightline = {}
@@ -97,7 +94,6 @@ function! ColorScheme()
   endif
 
   if g:VIM_COLOR_SCHEME ==# 'ayu-light'
-    packadd ayu
     let g:ayucolor="light"
     set background=light
     colorscheme ayu
@@ -106,7 +102,6 @@ function! ColorScheme()
   endif
 
   if g:VIM_COLOR_SCHEME ==# 'ayu-mirage'
-    packadd ayu
     set background=dark
     let g:ayucolor="mirage"
     colorscheme ayu
@@ -123,5 +118,5 @@ function! ColorScheme()
 endfunction
 
 " The Defaults
-:call SwitchColorScheme('challenger-deep')
+:call SwitchColorScheme('embark')
 
