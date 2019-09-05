@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/${USER}/.oh-my-zsh"
+export ZSH="/Users/${USER}/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -108,7 +108,7 @@ compinit
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -129,15 +129,14 @@ alias zshconfig="mate ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias d="dirs -v | head -10"
-alias config='/usr/bin/git --git-dir=/home/a290074/.cfg/ --work-tree=/home/a290074'
+alias config='/usr/bin/git --git-dir=/Users/${USER}/.cfg/ --work-tree=/Users/${USER}'
 
-source /usr/share/powerlevel9k/powerlevel9k.zsh-theme
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-source /home/${USER}/docker_aliases.zsh
+#source /home/${USER}/docker_aliases.zsh
 
-export PATH="/home/${USER}/.pyenv/bin:$PATH"
-export PATH="/home/${USER}/.local/bin:$PATH"
+export PATH="/Users/${USER}/.pyenv/bin:$PATH"
+export PATH="/Users/${USER}/.local/bin:$PATH"
 
 if [ -f ~/.zsh_aliases ]; then
     . ~/.zsh_aliases
