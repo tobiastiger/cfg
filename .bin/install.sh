@@ -15,36 +15,25 @@ check_is_sudo() {
 }
 
 
-setup_sudo() {
-    # Add user to sudoers
-    adduser "${USER}" sudo
-
-    # Create docker group
-    groupadd docker
-    gpasswd -a "${USER}" docker
-}
-
-
 base() {
-    apt-get update > /dev/null || true
+    check_is_sudo
+    echo "Installing..."
+    apt-get update > /dev/null || true 
+    apt-get install software-properties-common -y > /dev/null
+    apt-add-repository ppa:git-core/ppa -y > /dev/null
     apt-get install -y \
     git \
-    wget > /dev/null
-}
-
-
-install_vim() {
-    apt-get update > /dev/null || true
-    apt-get install -y \
-    vim-gui-common \
-    vim-runtime \
-    neovim \
-    taskwarrior > /dev/null
+    wget \
+    vim \
+    neovim > /dev/null
+    echo "Done."
+    echo ""
 }
 
 
 # Install zsh, plugins, and fonts.
-install_zsh() {
+zsh() {
+    echo "Installing zsh..."
     apt-get update > /dev/null || true
     apt-get install -y \
         zsh \
@@ -54,21 +43,25 @@ install_zsh() {
         zsh-syntax-highlighting > /dev/null
 
     usermod -s $(which zsh) $(whoami)
-
+    echo "Done."
+    echo ""
+    echo "Installing fonts..."
     sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/
 install.sh -O -y -)" > /dev/null
 
-    git clone https://github.com/ryanoasis/nerd-fonts.git
+    git clone https://github.com/ryanoasis/nerd-fonts.git > /dev/null
 
     (
         cd ${HOME}/nerd-fonts
-        ./install.sh Roboto
+        ./install.sh RobotoMono > /dev/null
         )
+    echo "Done."
+    echo ""
 }
 
 
-# Install zsh and themes
-get_dotfiles() {
+# Set up dotfiles repo.
+dotfiles() {
     echo ".cfg" >> .gitignore
 
     git clone --bare https://github.com/tobiastiger/cfg.git $HOME/.cfg
@@ -83,19 +76,22 @@ get_dotfiles() {
         config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
         config checkout
         echo "Success!";
+        echo "Checked out config."
     fi;
 
     config config status.showUntrackedFiles no
+    echo "Done."
+    echo ""
 }
 
 
 usage() {
     echo -e "\\n\\tInstall script for basic setup.\\n"
     echo "Usage:"
-    echo "  base                                - setup sources & install base pkgs"
-    echo "  dotfiles                            - get dotfiles"
-    echo "  zsh                                 - install zsh and themes"
-    echo "  vim                                 - install vim specific dotfiles"
+    echo "  base                - Setup sources & install base pkgs."
+    echo "  zsh                 - Install zsh and themes."
+    echo "  dotfiles            - Get dotfiles."
+    echo ""
 }
 
 
@@ -110,11 +106,9 @@ main() {
     if [[ $cmd == "base" ]]; then
         base
     elif [[ $cmd == "dotfiles" ]]; then
-        get_dotfiles
-    elif [[ $cmd == "vim" ]]; then
-        echo "This is not the editor you seek."
+        dotfiles
     elif [[ $cmd == "zsh" ]]; then
-        install_zsh
+        zsh
     else
         usage
     fi

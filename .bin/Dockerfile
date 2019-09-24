@@ -20,5 +20,5 @@ WORKDIR /root
 COPY install.sh .
 
 
-RUN ./install.sh base  && \
-    ./install.sh zsh
+#RUN ./install.sh base  && \
+#    ./install.sh zsh
