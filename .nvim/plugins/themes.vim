@@ -118,5 +118,5 @@ function! ColorScheme()
 endfunction
 
 " The Defaults
-:call SwitchColorScheme('embark')
+:call SwitchColorScheme('challenger-deep')
 

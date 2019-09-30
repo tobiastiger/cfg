@@ -12,30 +12,72 @@ POWERLEVEL9K_MODE="nerdfont-complete"
 
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
-#POWERLEVEL9K_DISABLE_RPROMPT=true
+# Color settings.
+POWERLEVEL9K_DIR_BACKGROUND="237"
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="clear"
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="012"
+POWERLEVEL9K_DIR_FOREGROUND="010"
+
+POWERLEVEL9K_DIR_HOME_BACKGROUND="clear"
+POWERLEVEL9K_DIR_HOME_FOREGROUND="012"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="clear"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="012"
+
+POWERLEVEL9K_DIR_PATH_SEPARATOR="%F{008}/%F{cyan}"
+
+POWERLEVEL9K_DIR_ETC_BACKGROUND="clear"
+POWERLEVEL9K_ETC_ICON="%F{blue}\uf423"
+POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_BACKGROUND="clear"
+POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_FOREGROUND="red"
+
+POWERLEVEL9K_VCS_CLEAN_BACKGROUND="clear"
+POWERLEVEL9K_VCS_CLEAN_FOREGROUND="green"
+POWERLEVEL9K_VCS_MODIFIED_BACKGROUND="clear"
+POWERLEVEL9K_VCS_MODIFIED_FOREGROUND="yellow"
+POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND="clear"
+POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND="green"
+
+POWERLEVEL9K_STATUS_ERROR_BACKGROUND="clear"
+POWERLEVEL9K_STATUS_ERROR_FOREGROUND="001"
+POWERLEVEL9K_STATUS_OK_BACKGROUND="clear"
+POWERLEVEL9K_STATUS_BACKGROUND="clear"
+
+POWERLEVEL9K_PYENV_BACKGROUND="clear"
+POWERLEVEL9K_PYENV_FOREGROUND="cyan"
+
+POWERLEVEL9K_VIRTUALENV_BACKGROUND="clear"
+POWERLEVEL9K_VIRTUALENV_FOREGROUND="cyan"
+
+# Prompt settings.
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX='\n'
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX=' \uE602 '
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX=" \uf101 "
 
-POWERLEVEL9K_VCS_GIT_GITHUB_ICON='\uF408 '
+POWERLEVEL9K_VCS_GIT_GITHUB_ICON="\uf408 "
+POWERLEVEL9K_CARRIAGE_RETURN_ICON="\uf071"
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir_writable dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator
+                                   dir
+                                   dir_writable_joined
+                                   vcs
+                                   )
+POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR="%F{008}\uf460%F{008}"
+
+
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status
-                                    command_execution_time
-                                    root_indicator
                                     background_jobs
                                     pyenv
                                     virtualenv
                                     docker_machine
                                     )
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=''
+POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR="%F{008}\uf104%F{008}"
 
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=3
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=2
+# Path shortening settings.
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
+POWERLEVEL9K_SHORTEN_DELIMITER='..'
+POWERLEVEL9K_SHORTEN_STRATEGY='truncate_from_right'
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -62,8 +104,8 @@ POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=2
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+# Auto-correction.
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
