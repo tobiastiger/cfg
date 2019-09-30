@@ -62,6 +62,11 @@ install.sh -O -y -)" > /dev/null
 
 # Set up dotfiles repo.
 dotfiles() {
+    if [ ! -d ${HOME}/.oh-my-zsh ]; then
+      echo "Installing dependencies..."
+      zsh
+    fi
+
     echo ".cfg" >> .gitignore
 
     git clone --bare https://github.com/tobiastiger/cfg.git $HOME/.cfg

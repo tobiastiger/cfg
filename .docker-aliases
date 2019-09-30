@@ -1,0 +1,16 @@
+# docker aliases; source in .zshrc
+
+alias dk='docker'
+alias dka='docker attach'
+alias dkb='docker build'
+alias dke='docker exec'
+
+alias dkil='docker image ls'
+alias dksp='docker system prune'
+alias dkip='docker image prune -a'
+alias dkcp='docker container prune --force'
+
+alias dkn='docker network ls'
+
+alias dkls='docker container ls -a --filter status=exited --filter status=created'
+alias dks='docker container stop $(docker container ls -aq)'
