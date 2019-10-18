@@ -5,6 +5,7 @@ nnoremap <silent> <leader>cn :cnext<CR>
 nnoremap <silent> <leader>cp :cprev<CR>
 nnoremap <silent> <RIGHT> :cnext<CR>
 nnoremap <silent> <LEFT> :cprev<CR>
+
 " Make many of the jump commands also center on search term
 nnoremap n nzz
 nnoremap N Nzz
@@ -16,12 +17,23 @@ nnoremap <leader>, :nohlsearch<CR>
 nnoremap <leader>/ :silent grep<space>
 nnoremap <leader>co :cw<CR>
 nnoremap <leader>cc :ccl<CR>
-" set ag as the grep program
+
+" Set ag as the grep program
 if executable('rg')
   set grepprg=rg\ --vimgrep
 endif
 
+" Previously used buffer
 nnoremap <BS> :b#<CR>
+
+" Supertab completions
+" This is how I got it so that tabbing moves down the completion list
+" from top to bottom instead of upwards
+let g:SuperTabMappingForward = '<s-tab>'
+let g:SuperTabMappingBackward = '<tab>'
+
+
+" --------------- Vista -------------------
 let g:vista_sidebar_width = 45
 let g:vista_disable_statusline = 1
 
@@ -37,12 +49,6 @@ let g:vista#renderer#icons = {
 \   "variable": "\ufb18 "
 \  }
 
-
-" supertab completions
-" This is how I got it so that tabbing moves down the completion list
-" from top to bottom instead of upwards
-let g:SuperTabMappingForward = '<s-tab>'
-let g:SuperTabMappingBackward = '<tab>'
 
 " -------------- NERDtree -----------------
 nnoremap <leader>b :NERDTreeToggle<CR>
